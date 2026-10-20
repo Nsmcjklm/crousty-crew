@@ -52,7 +52,7 @@ const ORDER_LINKS = {
       if (entry.isIntersecting) navAnchors.forEach((a) => a.classList.toggle("active", a.hash === `#${entry.target.id}`));
     });
   }, { rootMargin: "-45% 0px -50% 0px" });
-  ["commander", "carte", "horaires"].forEach((id) => spy.observe(document.getElementById(id)));
+  ["commander", "photos", "carte", "horaires"].forEach((id) => spy.observe(document.getElementById(id)));
 
   /* Apparition au scroll */
   const revealEls = [...document.querySelectorAll("[data-reveal]")];

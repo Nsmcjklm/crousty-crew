@@ -230,6 +230,65 @@ fieldset { border: 0; min-width: 0; }
 .order__note { margin-top: clamp(32px, 4vw, 48px); font-size: 1.05rem; }
 .order__note a { font-weight: 800; color: var(--blue); text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--orange); text-underline-offset: 4px; }
 
+/* ---------- Photos réelles ---------- */
+.stage-hero__photo {
+  position: absolute;
+  inset: 15%;
+  width: 70%; height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--navy);
+  box-shadow: 0 10px 0 rgba(27, 31, 75, .35);
+  animation: float 3.4s ease-in-out infinite;
+}
+.platform__photo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid var(--navy);
+  margin-bottom: 12px;
+  transition: transform .5s var(--ease);
+}
+.platform:hover .platform__photo { transform: scale(1.03) rotate(-1.5deg); }
+.mp-photo { display: block; width: 100%; height: auto; max-width: 230px; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 12px; border: 3px solid var(--orange); margin: 0 auto 10px; }
+.mp-sauces { display: flex; justify-content: center; gap: 10px; margin-bottom: 8px; }
+.mp-sauces img { width: 84px; height: 84px; object-fit: cover; border-radius: 50%; border: 3px solid var(--navy); }
+
+/* ---------- Galerie façon photos épinglées ---------- */
+.wall { padding: clamp(80px, 10vw, 120px) max(var(--pad), calc((100% - var(--max)) / 2)); text-align: center; }
+.wall__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 3vw, 34px); margin-top: clamp(36px, 5vw, 56px); align-items: start; }
+.snap {
+  position: relative;
+  background: #fffaf1;
+  padding: 10px 10px 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .15), 8px 10px 0 var(--navy);
+  transform: rotate(var(--r, -2deg));
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.snap::before {   /* bout de scotch */
+  content: "";
+  position: absolute;
+  top: -12px; left: 50%;
+  width: 84px; height: 24px;
+  background: rgba(245, 233, 74, .85);
+  border: 1px solid rgba(27, 31, 75, .15);
+  transform: translateX(-50%) rotate(-4deg);
+}
+.snap img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.snap:hover { transform: rotate(0) scale(1.04); z-index: 2; box-shadow: 0 2px 0 rgba(0, 0, 0, .15), 12px 14px 0 var(--navy); }
+.snap--a { --r: -3deg; }
+.snap--b { --r: 2deg; margin-top: 40px; }
+.snap--c { --r: -1.5deg; }
+.snap--d { --r: 2.5deg; margin-top: -30px; }
+.snap--e { --r: -2deg; }
+.snap--f { --r: 1.5deg; margin-top: -20px; }
+.snap[data-reveal].in { transform: rotate(var(--r, -2deg)); }
+.snap[data-reveal].in:hover { transform: rotate(0) scale(1.04); }
+
 /* ---------- La carte, façon affiche ---------- */
 .menu-wrap { padding: clamp(80px, 10vw, 120px) var(--pad); }
 .menu-poster {
@@ -311,6 +370,8 @@ fieldset { border: 0; min-width: 0; }
 }
 
 @media (max-width: 860px) {
+  .wall__grid { grid-template-columns: 1fr 1fr; }
+  .snap--d { margin-top: 0; }
   .top__nav { grid-template-columns: auto 1fr auto; }
   .logo { grid-column: 1; grid-row: 1; justify-self: start; }
   .top__order { display: none; }
@@ -335,7 +396,7 @@ fieldset { border: 0; min-width: 0; }
   .fab__btn {
     width: 92px; height: 92px; border-radius: 50%;
     border: 4px solid var(--navy); background: var(--yellow); color: var(--navy);
-    font-family: var(--brush); font-size: 1.2rem; letter-spacing: .04em;
+    font-family: var(--brush); font-size: 1.05rem; letter-spacing: .02em; padding: 0;
     box-shadow: 4px 4px 0 var(--navy);
     cursor: pointer;
     transform: rotate(-8deg);
@@ -344,11 +405,17 @@ fieldset { border: 0; min-width: 0; }
   .fab__btn[aria-expanded="true"] { transform: rotate(0) scale(.92); background: var(--cream); }
   .fab__menu { position: absolute; right: 0; bottom: 104px; display: grid; gap: 10px; min-width: 240px; }
   .fab__menu .btn { padding-inline: 12px; white-space: nowrap; font-size: .95rem; }
+  .fab__menu[hidden] { display: none; }
   .fab__menu:not([hidden]) { animation: fabIn .35s var(--ease); }
   @keyframes fabIn { from { opacity: 0; transform: translateY(14px) scale(.95); } }
 }
 
 @media (max-width: 600px) {
+  .wall__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .snap { padding: 6px 6px 18px; box-shadow: 0 2px 0 rgba(0,0,0,.15), 5px 6px 0 var(--navy); }
+  .snap--b, .snap--d, .snap--f { margin-top: 0; }
+  .snap::before { width: 56px; height: 18px; top: -9px; }
+  .mp-sauces img { width: 70px; height: 70px; }
   .order__grid { grid-template-columns: 1fr; }
   .platform .btn { white-space: normal; }
   .poster__cta .btn { flex: 1 1 100%; }

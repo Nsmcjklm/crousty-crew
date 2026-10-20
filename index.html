@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Crousty Crew Béziers">
+  <meta property="og:image" content="images/bol-coca.webp">
   <meta property="og:description" content="Crousty Cream ou Cheese, sides et sauces. À commander sur Uber Eats ou Deliveroo. 15B bd de Strasbourg, Béziers.">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f42a0'/%3E%3Cpath d='M8 30h48c-2 18-12 26-24 26S10 48 8 30z' fill='%23e63a2e' stroke='%231b1f4b' stroke-width='3'/%3E%3Ccircle cx='22' cy='26' r='7' fill='%23e9973a' stroke='%231b1f4b' stroke-width='3'/%3E%3Ccircle cx='34' cy='22' r='8' fill='%23e9973a' stroke='%231b1f4b' stroke-width='3'/%3E%3Ccircle cx='45' cy='27' r='6' fill='%23e9973a' stroke='%231b1f4b' stroke-width='3'/%3E%3C/svg%3E">
@@ -95,6 +96,7 @@
     <nav class="top__nav" aria-label="Navigation principale">
       <ul class="top__links top__links--left" id="navLinks">
         <li><a href="#commander">Commander</a></li>
+        <li><a href="#photos">Photos</a></li>
         <li><a href="#carte">La carte</a></li>
         <li><a href="#horaires">Horaires</a></li>
       </ul>
@@ -123,7 +125,7 @@
           <circle cx="200" cy="200" r="146" fill="#fbe7cf" stroke="#1b1f4b" stroke-width="6"/>
           <text font-family="Bangers, Impact, sans-serif" font-size="30" letter-spacing="3" fill="#fbe7cf"><textPath href="#ringPath">CROUSTY CREW ★ BÉZIERS ★ À EMPORTER ★ DELIVEROO ★ UBER EATS ★</textPath></text>
         </svg>
-        <svg class="stage-hero__bowl sauce-cream" viewBox="0 0 240 210" role="img" aria-label="Un bol rouge Crousty Crew rempli de riz et de poulet croustillant"><use href="#bowl"/></svg>
+        <img class="stage-hero__photo" src="images/bol-coca.webp" width="665" height="440" alt="Un bol rouge Crousty Crew rempli de poulet croustillant, avec une canette de Coca-Cola" fetchpriority="high">
         <span class="tag tag--cream">Cream</span>
         <span class="tag tag--cheese">Cheese</span>
         <svg class="spark spark--a" aria-hidden="true"><use href="#spark"/></svg>
@@ -147,13 +149,13 @@
 
       <div class="order__grid">
         <a class="platform platform--uber" data-order="ubereats" href="https://www.ubereats.com/fr/store/crousty-crew-beziers/BfXI0BCmUoWS0sB-ZyaTMw" target="_blank" rel="noopener" data-reveal>
-          <svg class="platform__bowl sauce-cream" viewBox="0 0 240 210" aria-hidden="true"><use href="#bowl"/></svg>
+          <img class="platform__photo" src="images/crousty-coca.webp" width="680" height="437" alt="" loading="lazy">
           <span class="platform__name">Uber Eats</span>
           <span class="platform__info">Livré chez toi à Béziers</span>
           <span class="btn btn--uber">Commander sur Uber Eats <span aria-hidden="true">→</span></span>
         </a>
         <a class="platform platform--deliveroo" data-order="deliveroo" href="https://deliveroo.fr/fr/menu/beziers/la-chevaliere/crousty-crew-beziers" target="_blank" rel="noopener" data-reveal style="--d:.1s">
-          <svg class="platform__bowl sauce-cheese" viewBox="0 0 240 210" aria-hidden="true"><use href="#bowl"/></svg>
+          <img class="platform__photo" src="images/crousty-boite-2.webp" width="680" height="436" alt="" loading="lazy">
           <span class="platform__name">Deliveroo</span>
           <span class="platform__info">Livré chez toi à Béziers</span>
           <span class="btn btn--deliveroo">Commander sur Deliveroo <span aria-hidden="true">→</span></span>
@@ -161,6 +163,19 @@
       </div>
 
       <p class="order__note" data-reveal>Tu préfères passer ? Les croustys sont aussi <strong>à emporter</strong> au <a href="#horaires">15B bd de Strasbourg</a>.</p>
+    </section>
+
+    <!-- ===== Galerie : les vraies photos ===== -->
+    <section class="wall" id="photos" aria-labelledby="wall-title">
+      <h2 id="wall-title" class="tab-title" data-reveal>En vrai, ça donne ça</h2>
+      <div class="wall__grid">
+        <figure class="snap snap--a" data-reveal><img src="images/duo-logo.webp" width="408" height="510" alt="Deux box de crousty Crousty Crew avec des tenders et une sauce" loading="lazy"></figure>
+        <figure class="snap snap--b" data-reveal style="--d:.06s"><img src="images/combo-kiffeur.webp" width="408" height="510" alt="Affiche Le combo de kiffeur : une box de crousty nappée de sauce jaune" loading="lazy"></figure>
+        <figure class="snap snap--c" data-reveal style="--d:.12s"><img src="images/duo-main.webp" width="407" height="510" alt="Une main attrape un morceau de poulet croustillant dans une box" loading="lazy"></figure>
+        <figure class="snap snap--d" data-reveal style="--d:.18s"><img src="images/crousty-boite.webp" width="680" height="447" alt="Une box de crousty ouverte, poulet croustillant et sauce" loading="lazy"></figure>
+        <figure class="snap snap--e" data-reveal style="--d:.24s"><img src="images/crousty-main.webp" width="408" height="510" alt="Un morceau de crousty saucé pris à la main" loading="lazy"></figure>
+        <figure class="snap snap--f" data-reveal style="--d:.3s"><img src="images/crousty-coca-2.webp" width="680" height="454" alt="Une box de crousty avec une canette de Coca-Cola" loading="lazy"></figure>
+      </div>
     </section>
 
     <!-- ===== La carte, façon affiche ===== -->
@@ -179,12 +194,13 @@
           <div class="panel">
             <h3 class="panel__tab">Nos sides</h3>
             <div class="mp-side"><b>Potato Pops</b><span>Nos pops de pomme de terre dorés croustillants.</span><em>5,50€</em></div>
-            <div class="mp-side"><b>Waffles</b><span>Nos délicieuses frites de pomme de terre façon waffle.</span><em>4,90€</em></div>
-            <div class="mp-side"><b>Tenders ×3</b><span>Nos tenders de poulet ×3, avec un max de sauce pour un max de plaisir.</span><em>7,90€</em></div>
+            <div class="mp-side"><img class="mp-photo" src="images/waffles.webp" width="680" height="455" alt="Des waffles dorées dans une boîte en carton" loading="lazy"><b>Waffles</b><span>Nos délicieuses frites de pomme de terre façon waffle.</span><em>4,90€</em></div>
+            <div class="mp-side"><img class="mp-photo" src="images/tenders.webp" width="680" height="445" alt="Trois tenders de poulet panés avec une sauce" loading="lazy"><b>Tenders ×3</b><span>Nos tenders de poulet ×3, avec un max de sauce pour un max de plaisir.</span><em>7,90€</em></div>
           </div>
           <div class="menu-poster__stack">
             <div class="panel">
               <h3 class="panel__tab">Nos sauces</h3>
+              <div class="mp-sauces" aria-hidden="true"><img src="images/sauce-brune.webp" width="680" height="441" alt="" loading="lazy"><img src="images/sauce-jaune.webp" width="680" height="449" alt="" loading="lazy"></div>
               <ul class="mp-list"><li>Aigre douce <i>1€</i></li><li>Sweet and spicy <i>1€</i></li><li>Barbecue <i>1€</i></li><li>Curry <i>1€</i></li></ul>
             </div>
             <div class="panel">
