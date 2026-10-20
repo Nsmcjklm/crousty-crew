@@ -1,8 +1,20 @@
 /* =========================================================
    Crousty Crew, Béziers
    ========================================================= */
+
+/* Liens de commande du restaurant (un seul endroit à modifier si ça change) */
+const ORDER_LINKS = {
+  deliveroo: "https://deliveroo.fr/fr/menu/beziers/la-chevaliere/crousty-crew-beziers",
+  ubereats: "https://www.ubereats.com/fr/store/crousty-crew-beziers/BfXI0BCmUoWS0sB-ZyaTMw",
+};
+
 (() => {
   "use strict";
+
+  document.querySelectorAll("[data-order]").forEach((a) => {
+    const url = ORDER_LINKS[a.dataset.order];
+    if (url) a.href = url;
+  });
 
   requestAnimationFrame(() => document.body.classList.add("loaded"));
 
@@ -16,7 +28,13 @@
   };
   burger.addEventListener("click", () => setMenu(!links.classList.contains("open")));
   links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
+  /* Bouton rond "Commander" (mobile) */
+  const fabBtn = document.getElementById("fabBtn");
+  const fabMenu = document.getElementById("fabMenu");
+  const setFab = (open) => { fabMenu.hidden = !open; fabBtn.setAttribute("aria-expanded", String(open)); fabBtn.textContent = open ? "Fermer" : "Commander"; };
+  fabBtn.addEventListener("click", () => setFab(fabMenu.hidden));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { setMenu(false); setFab(false); } });
 
   /* Header : se cache en descendant, revient en remontant */
   const header = document.getElementById("header");
@@ -27,14 +45,14 @@
     lastY = y;
   }, { passive: true });
 
-  /* Lien actif dans le menu */
+  /* Lien actif */
   const navAnchors = [...links.querySelectorAll("a")];
   const spy = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) navAnchors.forEach((a) => a.classList.toggle("active", a.hash === `#${entry.target.id}`));
     });
   }, { rootMargin: "-45% 0px -50% 0px" });
-  ["croustys", "sides", "infos"].forEach((id) => spy.observe(document.getElementById(id)));
+  ["commander", "carte", "horaires"].forEach((id) => spy.observe(document.getElementById(id)));
 
   /* Apparition au scroll */
   const revealEls = [...document.querySelectorAll("[data-reveal]")];
@@ -55,7 +73,7 @@
     });
   }, { passive: true });
 
-  /* Horaires : jour en cours + ouvert / fermé (heure de Paris) */
+  /* ---------- Horaires : jour en cours, repère "maintenant", ouvert / fermé ---------- */
   const schedule = {
     1: [[690, 870], [1080, 1440]], 2: [[690, 870], [1080, 1440]], 3: [[690, 870], [1080, 1440]], 4: [[690, 870], [1080, 1440]],
     5: [[675, 780], [1080, 1440]],
@@ -71,7 +89,19 @@
     const day = days[get("weekday").replace(".", "").toLowerCase()];
     const mins = Number(get("hour")) * 60 + Number(get("minute"));
     const open = schedule[day].some(([a, b]) => mins >= a && mins < b);
-    document.querySelectorAll("#hours tr").forEach((tr) => tr.classList.toggle("today", tr.dataset.days.split(" ").includes(String(day))));
+
+    document.querySelectorAll("#days li").forEach((li) => {
+      const isToday = Number(li.dataset.day) === day;
+      li.classList.toggle("today", isToday);
+      li.querySelector(".now")?.remove();
+      if (isToday && mins >= 660) {   // repère visible entre 11h et minuit
+        const m = document.createElement("span");
+        m.className = "now";
+        m.style.setProperty("--t", mins - 660);
+        m.title = "Maintenant";
+        li.querySelector(".track").append(m);
+      }
+    });
     status.textContent = open ? "Ouvert en ce moment" : "Fermé en ce moment";
     status.className = `open ${open ? "is-open" : "is-closed"}`;
   };
