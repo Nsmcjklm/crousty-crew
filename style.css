@@ -157,8 +157,6 @@ fieldset { border: 0; min-width: 0; }
 
 .stage-hero { position: relative; width: min(440px, 86vw); aspect-ratio: 1; margin: clamp(-20px, -2vw, -10px) auto 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.stage-hero:has(.stage-hero__img) { aspect-ratio: auto; }
-.stage-hero__img { display: block; width: 100%; height: auto; }
 .ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 30s linear infinite; }
 .stage-hero__bowl { position: absolute; left: 12%; top: 12.3%; width: 76%; height: auto; filter: drop-shadow(0 10px 0 rgba(27, 31, 75, .4)); animation: float 3.4s ease-in-out infinite; }
 .tag {

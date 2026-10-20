@@ -134,8 +134,17 @@
       </h1>
 
       <div class="stage-hero" data-reveal style="--d:.2s">
-        <img class="stage-hero__img" src="images/emblem.webp" width="1232" height="1116"
-             alt="Emblème Crousty Crew : un pot rouge rempli de riz et de poulet croustillant, entouré d'un anneau orange « Crousty Crew, Béziers, à emporter, Deliveroo, Uber Eats », avec les étiquettes Cream et Cheese" fetchpriority="high">
+        <svg class="ring" viewBox="0 0 400 400" aria-hidden="true">
+          <defs><path id="ringPath" d="M30 200a170 170 0 1 1 340 0a170 170 0 1 1-340 0"/></defs>
+          <circle cx="200" cy="200" r="196" fill="#e0612b" stroke="#1b1f4b" stroke-width="6"/>
+          <circle cx="200" cy="200" r="146" fill="#ffffff" stroke="#1b1f4b" stroke-width="6"/>
+          <text font-family="Bangers, Impact, sans-serif" font-size="31" fill="#fbe7cf" dominant-baseline="central"><textPath href="#ringPath" textLength="1060" lengthAdjust="spacing">CROUSTY CREW ★ BÉZIERS ★ À EMPORTER ★ DELIVEROO ★ UBER EATS ★</textPath></text>
+        </svg>
+        <svg class="stage-hero__bowl sauce-cream" viewBox="0 0 240 210" role="img" aria-label="Un pot rouge Crousty Crew rempli de riz et de poulet croustillant"><use href="#bowl"/></svg>
+        <span class="tag tag--cream">Cream</span>
+        <span class="tag tag--cheese">Cheese</span>
+        <svg class="spark spark--a" aria-hidden="true"><use href="#spark"/></svg>
+        <svg class="spark spark--b" aria-hidden="true"><use href="#spark"/></svg>
       </div>
 
       <p class="poster__lead" data-reveal style="--d:.35s">Du riz, du poulet qui croustille, et ta sauce&nbsp;: <strong>Cream</strong> ou <strong>Cheese</strong>. À emporter ou livré chez toi.</p>
